@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+option go_package = "github.com/ZzCoding530/gprc-my-learning/hellogrpc/hellogrpc";
+
+
+package hellogrpc;
+
+
+//模拟一个翻译服务,作者输入一句话，我们返回他的相关翻译和称呼 女士/先生
+service Translate {
+    // Sends a greeting
+    rpc  TranslateToEnglish (Input) returns (OutPut) {}
+  
+    rpc TranslateToGermany (Input) returns (OutPut) {}
+}
+
+
+message Input {
+    string inputContent = 1;
+    Author author = 2;
+}
+
+message Author {
+    string name = 1;
+    string gender = 2;
+}
+
+message OutPut {
+    string outputContent = 1;
+    string call = 2;
+}
